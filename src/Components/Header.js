@@ -1,38 +1,40 @@
 import { useState,useRef, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Globe, House ,Youtube ,Icon8Square,Newspaper} from "react-bootstrap-icons"
+
 
 const Header=()=>{
-/*
-    const navLinks=[
-        {
-       path:"/",
-       navName:"tab",
-       icon:<House size={24}/>
+    const selectDataShorts=useSelector((store)=>store.dataSliced.allShorts) 
+ const navLinks=[
+       
     
-        },
-        {
-            path:"/cart",
-            navName:"tab",
-            icon:<FileEarmark size={24}/>
-         
-             },
-             {
-                path:"/upload",
-                navName:"tab",
-                icon:<CloudUploadFill size={24}/>
+{
+                        path:"/playlist/PLF_A6dNxTXazPGTqnPdrS4ZFmoAzu_k6w",
+                        navName:"Breaking News",
+                        icon:<Newspaper size={24}/>
+                     
+                         },
+
+             
+                 {
+                    path:"/playlist/PLF_A6dNxTXawUA94psGVCxXfIf4FtxQTI",
+                    navName:"8PM BREAKING",
+                    icon:<Icon8Square size={24}/>
+                 
+                     },
+                     
+                     {
+                path:"/playlist/PLF_A6dNxTXazVWmkHf3uQtV9xAI9MzjdB",
+                navName:"TRM DUNIYA",
+                icon:<Globe size={24}/>
              
                  },
-                 {
-                    path:"/setting",
-                    navName:"tab",
-                    icon:<GearWideConnected size={24}/>
-                 
-                     }
-                     
     
     
-    ]*/
+    ]
 
-const navLinks=["lion","ldid","dddd","ddde","ded"]
+//const navLinks=["lion","ldid","dddd","ddde","ded"]
 
 
 const [navBar , setNavBar] = useState(false)
@@ -53,6 +55,7 @@ return(()=>{window.removeEventListener("mousedown",hideNavout)})
 },[])
 
 
+
     return(
         <>
 
@@ -64,17 +67,22 @@ return(()=>{window.removeEventListener("mousedown",hideNavout)})
 
 <div className=" hidden  sm:flex flex-row justify-between">
 
-<div>tab</div>
+<Link to={"/"}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}><House size={24}/>Home</div></Link> 
+{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}><Youtube size={24}/>shorts</div></Link> }
 
-<div>tab</div>
+{navLinks.map((item,index)=>{
+    
+    return(
+        <div key={item.path}>
+    <Link to={item.path}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}>
+     {item.icon}  {item.navName}
+      
 
-<div>tab</div>
-
-<div>tab</div>
-
-<div>tab</div>
-
-<div>tab</div>
+        </div></Link> 
+        </div>
+    )
+})}
+        
 </div>
 
 
@@ -86,14 +94,24 @@ return(()=>{window.removeEventListener("mousedown",hideNavout)})
 <button className="p-2 m-1 rounded-lg ml-[85%] text-red-600 text-2xl font-extrabold" onClick={()=>setNavBar(!navBar)}>ll</button>
 <div >
 <ul className="mt-16">
+
+
+<Link to={"/"}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}><House size={24}/>Home</div></Link> 
+{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}><Youtube size={24}/>shorts</div></Link> }
+
+        
+
+
+
 {navLinks.map((item)=>{
+    
     return(
-        <div key={item}>
-        <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}>
-         {item}
+        <div key={item.path}>
+    <Link to={item.path}>   <div  className={`p-2 text-center border border-gray-200 hover:bg-[#202020c9] hover:text-white" `}>
+     {item.icon}  {item.navName}
       
 
-        </div>
+        </div></Link> 
         </div>
     )
 })}

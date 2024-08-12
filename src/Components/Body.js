@@ -1,11 +1,14 @@
-import Header from "./Header"
-import MainContainer from "./MainContainer"
 
+import MainContainer from "./MainContainer"
+import Header from "./Header"
 const Body=()=>{
-    return(<>
-<Header/>
+   
+    return(
+    <>
+     <Header/>
 <MainContainer/>
-    </>)
+    </>
+    )
 }
 
 

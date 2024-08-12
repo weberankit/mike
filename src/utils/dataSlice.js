@@ -5,7 +5,9 @@ const dataSlice=createSlice({
 initialState:{
  allVideos:null,
  allShorts:null,
- onlyVideos:null
+ onlyVideos:null,
+ 
+ 
 }
 ,
 reducers:{
@@ -20,6 +22,10 @@ addAllShorts:(state,action)=>{
     state.onlyVideos=action.payload
    }
    
+
+  
+
+
 }
 
 

@@ -10,6 +10,7 @@ import { useParams ,Link} from "react-router-dom";
 import { storeDataTorefreshPage } from "../helper";
 import YouTube from "react-youtube";
 import { addiframeVideo } from "../utils/generalSlice";
+import { XCircle } from "react-bootstrap-icons";
 //import Frame from "./Frame";
 //import { useSelector } from "react-redux";
 const Shorts=()=>{
@@ -21,12 +22,14 @@ const [indicate,setIndicate] = useState()
 const scrollRef=useRef()
 const dispatch=useDispatch()
 
-
+//console.log(id)
 
 
 useEffect(()=>{
 
-dispatch(addiframeVideo("loading video ....."))
+
+
+dispatch(addiframeVideo("loading video ..... wait"))
 setAdd(()=>{
     if(!selectDataShorts) return null
    const arr=   selectDataShorts.filter((item)=>{
@@ -44,9 +47,9 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
 
  if(!selectDataShorts){
-         console.log("kk")
+        // console.log("kk")
             setAdd(()=>{
-                   let data =JSON.parse(localStorage.getItem("shorts"))
+                   let data =JSON.parse(localStorage.getItem("shorts")) 
                    return data
             })
           }
@@ -59,7 +62,7 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
     
  const iframes = document.querySelectorAll("iframe");
- console.log(iframes,"iframes")
+// console.log(iframes,"iframes")
    const observerOptions = {
        root: null, // viewport
        rootMargin: '0px',
@@ -93,7 +96,7 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
     const refValue = scrollRef.current;
     refValue.scrollBy(0,50)
-    console.log(refValue)
+//    console.log(refValue)
 
   } 
   function handleScrollDown(){
@@ -103,9 +106,10 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
 
   const onReady = (event) => {
-    console.log('Video is ready to play.');
+  //  console.log('Video is ready to play.');
     // You can perform additional actions here when the video is ready
     dispatch(addiframeVideo(null))
+    console.log("event")
   };
 
 
@@ -140,7 +144,7 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 return(
     <>
   <Link to={"/"}>  <span className="bg-white absolute top-9"><button>Home</button></span> </Link> 
- {selectIframestatus && <div className="bg-white p-2 fixed top-12">{selectIframestatus}</div>}
+ {selectIframestatus && <div className="bg-white p-2 fixed top-12">{selectIframestatus} <div onClick={()=>dispatch(addiframeVideo(null))}> <XCircle/></div></div>}
     <div style={{display:"flex",justifyContent:"center" ,flexDirection:"row"}} className="bg-black h-full p-7">
  <button className="bg-white text-black absolute h-6 right-0 top-1/2  " onClick={()=>{handleScrollUp()}}>scrollDown</button>
     
@@ -151,7 +155,7 @@ return(
 {
     shortsAdd&& shortsAdd.slice(0,9).map(item2 => {
        
-     console.log(item2.snippet.resourceId.videoId)
+    // console.log(item2.snippet.resourceId.videoId)
     
   
 
@@ -161,7 +165,7 @@ return(
 return(
    
 
-<YouTube className="reels"   videoId={item2.snippet.resourceId.videoId}
+<YouTube key={item2.snippet.resourceId.videoId} className="reels"   videoId={item2.snippet.resourceId.videoId}
   opts={opts}
   onReady={onReady}
  

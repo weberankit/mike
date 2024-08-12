@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import { useParams ,useNavigate} from "react-router-dom"
 import { useSelector,useDispatch } from "react-redux"
 import { addVideoDescData } from "../utils/generalSlice"
+import liveImg from "../image/live-img.png"
 //import { Behance } from "react-bootstrap-icons"
 const LatestVideosPlay=()=>{
 
@@ -52,14 +53,16 @@ useEffect(()=>{
 <div>
 
 {
-    selectOnlyVideos&&selectOnlyVideos.map((item)=>{
+    selectOnlyVideos&&selectOnlyVideos.map((item,index)=>{
         //skip the playinf video
         if(item.id.videoId !== idValue){
+            console.log(item)
         return(
-            <div onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
+            <div  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
                 
-            <img key={item.snippet.thumbnails.high.url}   src={item.snippet.thumbnails.high.url}
+            <img key={item.snippet.thumbnails.high.url} className="border-black border p-2"   src={item?.snippet?.liveBroadcastContent === "live"? liveImg:item.snippet.thumbnails.high.url}
                             alt={item.snippet.title}></img>
+                            <h1>{item?.snippet?.liveBroadcastContent === "live"?"live":""}</h1>
             </div>
         )}
     })

@@ -52,7 +52,7 @@ function handleMove(e){
     {
 
 
-         selectDataShorts&&   selectDataShorts.slice(0,7).map((card) => {
+         selectDataShorts&&   selectDataShorts.slice(0,7).map((card,index) => {
                 return (
                  <Link to={`/shorts/${card.snippet.resourceId.videoId}`} key={card.snippet.resourceId.videoId} >   <div className="flex-shrink-0  p-2 w-64 mb-96">
                         <img

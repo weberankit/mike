@@ -64,11 +64,20 @@ scroll-snap-align: start;
 
 
 
+/*for image-lazy-load*/
 
+img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+}
 
-
-
-
+.blur-load{
+  background-size: cover;
+  background-position: center;
+}
 
 
 

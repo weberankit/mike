@@ -22,7 +22,7 @@ useEffect(()=>{
         //to save credits of api we only want to call api only once---
         //even when app component is ummounted 
         if(!selectDatavideo){
-         videoFetch() ;
+        videoFetch() ;
          //  console.log(selectDatavideo)
         }
 
@@ -34,40 +34,35 @@ useEffect(()=>{
      
 
 try{
-
   
-        const data = await fetch(`
-  https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YT_KEY}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20`)
-        
+const data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${p+"dd"}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20 `)
+       
 const json = await data.json()
 
 console.log(json)
 if(json?.items){
  //   console.log(selectDataShorts)
 
-
-
-
-
 dispatch(addAllVideos(json?.items))
 
 }else{
     //if api quota over then use old data
-   
+   console.log("do")
     dispatch(addAllVideos(oldData))
    // console.log(oldData)
    dispatch(addError(" Check your youtube channel for latest"))
 
 }
 }catch(error){
+    console.log("kk")
     //if data not fetch use old data
     dispatch(addAllVideos(oldData))
     dispatch(addError(" Check your youtube channel for latest"))
 
-}
-        
 
-        }
+        
+}
+       }
 
 
 useEffect(() => {
