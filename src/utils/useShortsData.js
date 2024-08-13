@@ -10,23 +10,23 @@ const useShortsData=()=>{
       try{
 
         
-  const data = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.REACT_APP_YT_KEY+"loss"}&playlistId=UUSHW9A1mvMHxVrGViwx4WCbcQ&part=snippet,id&maxResults=15`)
+  const data = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.REACT_APP_YT_KEY+"PPP"}&playlistId=UUSHW9A1mvMHxVrGViwx4WCbcQ&part=snippet,id&maxResults=15`)
            
    const json = await data.json()
    
    console.log(json)
    if(json?.items){
    dispatch(addAllShorts(json.items))
-   
+   dispatch(addError(null))
    }else{
     //if api limit is over then use old data
     dispatch(addAllShorts(oldShorts))
-    dispatch(addError(" Check your youtube channel for latest"))
+    dispatch(addError(" Check REDMIKE youtube channel for latest"))
    }
   }catch(error){
     //if api fail use old data
     dispatch(addAllShorts(oldShorts))
-    dispatch(addError(" Check your youtube channel for latest"))
+    dispatch(addError(" Check REDMIKE youtube channel for latest"))
 
   }
            

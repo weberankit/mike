@@ -7,6 +7,7 @@ import YouTube from "react-youtube"
 //import { lazy,Suspense } from "react"
 //import { listof8pm ,listbreaking, listTrmDuniya, dataApiCreditOver} from "./playlistconstant"
 import { dataApiCreditOver, titlePlay} from "./playlistconstant"
+import Header from "./Header"
 
 const Playlist =()=>{
 
@@ -15,6 +16,7 @@ const Playlist =()=>{
 
 
 const {id}=useParams()
+console.log(id,"this is id")
 const selectPlaylistData= useSelector((store)=>store.playlistSliced.playListData)
 console.log(selectPlaylistData,"nullwala")
 const dispatch=useDispatch()
@@ -45,10 +47,11 @@ const [dataSrc,setDataSrc] =useState(null)
      }
 
 
-  },[selectPlaylistData])
+  },[selectPlaylistData,id])
     return(
         <>
- 
+ <Header hideTopUp={"hidden"}/>
+
 {!dataSrc && (
   <>
     {selectPlaylistData[id] && (

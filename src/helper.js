@@ -25,14 +25,17 @@ if (store) {
 
 export function ImageLazyLoading(e,refCurrent){
     if(refCurrent){
- 
+ console.log(refCurrent.style)
     
         e.target.style.opacity=1
         e.target.style.animation="none"
+    
+      
        }
        if(e?.target?.complete){
             e.target.style.opacity=1
         e.target.style.animation="none"
+         
        }
        
 }

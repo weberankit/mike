@@ -1,11 +1,14 @@
 body {
-  margin: 0;
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
+  
+
+ 
   
 }
 /*
@@ -33,6 +36,11 @@ scroll-snap-align: start;
 }
 
 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 .reelsContainer {
   margin-top: 2em;
   height: 90vh;
@@ -62,21 +70,67 @@ scroll-snap-align: start;
 
 
 
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+ 
+}
+
+.video-container iframe {
+  border-radius: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/*image---------
+.video-img {
+  position: relative;
+  padding-bottom: 56.25%;
+  
+  overflow: hidden;
+  max-width: 100%;
+
+
+
+
+}
+.video-img img{
+  border-radius: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+*/
+
+
+
 
 
 /*for image-lazy-load*/
-
+/*
 img{
   width: 100%;
   aspect-ratio: 1/1;
   display: block;
   object-position: center;
-  object-fit: cover;
+  object-fit: contain;
 }
-
+*/
 .blur-load{
-  background-size: cover;
+ 
+  
+ 
+  background-size:contain;
   background-position: center;
+  
+
 }
 
 

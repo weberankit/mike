@@ -9,14 +9,8 @@ import Shorts from "./Components/Shorts";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import useCheckOnline from "./utils/useCheckOnline";
-
-
-
-
-
-
-
 import { lazy ,Suspense} from "react";
+import Error from "./Components/Error";
 
 
 
@@ -49,7 +43,8 @@ function App() {
 const configPath=createBrowserRouter([
 
   {path:"/",
-    element:<Body/>
+    element:<Body/>,
+    errorElement:<Error/>
   },
  {
   path:"/latestVideo/:id",

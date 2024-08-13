@@ -11,6 +11,7 @@ import { storeDataTorefreshPage } from "../helper";
 import YouTube from "react-youtube";
 import { addiframeVideo } from "../utils/generalSlice";
 import { XCircle } from "react-bootstrap-icons";
+import Header from "./Header";
 //import Frame from "./Frame";
 //import { useSelector } from "react-redux";
 const Shorts=()=>{
@@ -143,8 +144,14 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
 return(
     <>
+
+    <Header hideTopUp={"hidden"}/>
   <Link to={"/"}>  <span className="bg-white absolute top-9"><button>Home</button></span> </Link> 
  {selectIframestatus && <div className="bg-white p-2 fixed top-12">{selectIframestatus} <div onClick={()=>dispatch(addiframeVideo(null))}> <XCircle/></div></div>}
+
+
+
+
     <div style={{display:"flex",justifyContent:"center" ,flexDirection:"row"}} className="bg-black h-full p-7">
  <button className="bg-white text-black absolute h-6 right-0 top-1/2  " onClick={()=>{handleScrollUp()}}>scrollDown</button>
     
