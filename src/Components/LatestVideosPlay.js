@@ -122,9 +122,9 @@ onEnd={onEnd}
         return(
             <div className="topvideo relative"  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
                   <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
-            <img key={item.snippet.thumbnails.high.url} className="p-2 rounded-3xl "   src={item?.snippet?.liveBroadcastContent === "live"? liveImg : item.snippet.thumbnails.high.url}
+            <img key={item.snippet.thumbnails.high.url} className={`p-2 rounded-3xl ${item?.snippet?.liveBroadcastContent === "live" && "border border-dotted border-black w-full"} `}   src={item?.snippet?.liveBroadcastContent === "live"? liveImg : item.snippet.thumbnails.high.url}
                             alt={item.snippet.title}></img>
-                            <h1>{item?.snippet?.liveBroadcastContent === "live"?"live":""}</h1>
+                            <h1>{/*item?.snippet?.liveBroadcastContent === "live"?"live":""*/}</h1>
             </div>
         )}
     })

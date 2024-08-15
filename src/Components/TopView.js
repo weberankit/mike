@@ -30,6 +30,7 @@ useEffect(()=>{
         }
       dispatch(addShowLatestStatus(true))
     },[])
+//lllll
 
     
     async function videoFetch(){
@@ -153,7 +154,7 @@ onEnd={onEnd}
     {topCard && <div>
         <div className="lg:mt-28">
     <div className="text-2xl font-extrabold p-2 m-3 lg:mb-4"><h1>{topCard?.snippet?.title}</h1></div>
-     <a href={`https://www.youtube.com/watch?v=${topCard?.id?.videoId}`} target="_blank" rel="noopener noreferrer"><div className="bg-red-500 text-whit p-2 w-44 ml-6 text-white font-semibold rounded-md lg:ml-8"><button>Watch on Youtube</button></div></a>       
+    <div className="bg-red-500   p-2 w-44 ml-6 text-white font-semibold rounded-md lg:ml-8"> <a href={`https://www.youtube.com/watch?v=${topCard?.id?.videoId}`} target="_blank" rel="noopener noreferrer"><button>Watch on Youtube</button></a> </div>      
         <p className="mt-9 ml-6 ">{topCard?.snippet?.description?.split(" ")?.slice(0,15)?.join(' ')}</p>
         </div>
         
