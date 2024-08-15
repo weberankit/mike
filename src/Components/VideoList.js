@@ -9,7 +9,7 @@ import CustomShimmerBox from "./CustomShimmerBox"
 import { CaretLeft, CaretLeftFill, CaretRightFill, Play } from "react-bootstrap-icons"
 const VideoList=()=>{
    // const selectDatavideo=useSelector((store)=>store.dataSliced.allVideos)
-   const selectSkipVideo=useSelector((store)=>store.generalData. videoSkip)
+   const selectSkipVideo=useSelector((store)=>store.generalData.videoSkip)
    //const selectDataShorts=useSelector((store)=>store.dataSliced.allShorts)
    
    const selectOnlyVideos=useSelector((store)=>store.dataSliced.onlyVideos)
@@ -69,7 +69,7 @@ const handleScrollRight = () => {
 
     {
     
-    selectOnlyVideos && selectOnlyVideos
+    selectSkipVideo && selectOnlyVideos
             .filter((item) =>{
                //if their is no live so it willskip most latest video
                 if(item.id.videoId !== selectSkipVideo.id.videoId && item.snippet.liveBroadcastContent !== "upcoming" && item.snippet.liveBroadcastContent !== "live"  ){

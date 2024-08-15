@@ -71,16 +71,22 @@ dispatch(addError(null))
 
 useEffect(() => {
 //aa to enure it call when data is avail
-    if(!selectDatavideo) return
+    if(!selectDatavideo){
+        return
+    }  
+    if(!selectOnlyVideos) {
+        return
+    } 
+//here we can use any selectonlyvidos or selectdatavideos---because if api fail data is dispatched
+//to selectdatavideos so that we are using this but we can also use selectonlyvideo tht also works as it filtered data
 
-
-    const liveVideo = selectDatavideo?.find((item) => item.snippet.liveBroadcastContent === "live");
+    const liveVideo = selectOnlyVideos?.find((item) => item.snippet.liveBroadcastContent === "live");
     setTopCard(liveVideo || selectOnlyVideos?.[0]); //if live then go for it otherwise latest one
 
      liveVideo?dispatch(addVideoSkip(liveVideo)):dispatch(addVideoSkip(selectOnlyVideos[0]))   
 
 
-}, [selectDatavideo]);
+}, [selectDatavideo,selectOnlyVideos]);
 
 const selectIframeVideoTopViewStatus=useSelector((store)=>store.generalData.showLatestVideoStatus)
 
