@@ -99,7 +99,13 @@ onEnd={onEnd}
 
      <h2 className="text-3xl p-1 m-2 font-extrabold w-4/5"> {selectDescData&&selectDescData?.snippet?.title}</h2> 
   <p className="p-1 text-xl m-1 font-semibold w-4/5">  {selectDescData&& selectDescData?.snippet?.description?.split(" ")?.slice(0,15)?.join(" ")}</p>
-  <p className="text-red-500 w-44"> {slectError ? slectError : <div className="p-1 bg-red-500 rounded-lg text-sm text-white"> Latest-videos</div>}</p>
+
+ 
+ 
+  
+{slectError &&  <p className="text-red-500 w-44"> slectError </p>}
+
+ 
 </div>
 
 </div>

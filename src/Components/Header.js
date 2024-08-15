@@ -221,7 +221,7 @@ if(scrollRef.current){
     )
 })}
 <Link to={"/advertise"}>   <div  className={` ${location.pathname==="/advertise" ?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}><Film className="mr-11  mt-1" size={24}/>Advertisement</div></Link> 
-<Link to={"/"}>   <div  className={` ${location.pathname === "/contact"?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}><PersonBadgeFill className="mr-11  mt-1 " size={24}/>Contact</div></Link> 
+<Link to={"/contact"}>   <div  className={` ${location.pathname === "/contact"?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}><PersonBadgeFill className="mr-11  mt-1 " size={24}/>Contact</div></Link> 
 
 </ul>
 
