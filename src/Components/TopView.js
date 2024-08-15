@@ -38,8 +38,8 @@ useEffect(()=>{
 
 try{
    
-    const q=process.env.REACT_APP_YT_KEY
-const data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${q}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20 `)
+   
+const data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YT_KEY}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20 `)
        
 const json = await data.json()
 
