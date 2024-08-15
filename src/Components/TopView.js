@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from "react"
 
 import { useDispatch ,useSelector} from "react-redux"
 import { addAllVideos } from "../utils/dataSlice"
-import { addVideoSkip,addError } from "../utils/generalSlice"
+import { addVideoSkip,addError, addShowLatestStatus } from "../utils/generalSlice"
 import { oldData } from "../constant"
 import useShortsData from "../utils/useShortsData"
 import YouTube from "react-youtube"
 import CustomShimmerBox from "./CustomShimmerBox"
+import { XCircle } from "react-bootstrap-icons"
 
 const TopView=()=>{
 const dispatch=useDispatch()
-
+const selectOnlyVideos=useSelector((store)=>store.dataSliced.onlyVideos)//
 const selectDatavideo=useSelector((store)=>store.dataSliced.allVideos)
 const slectError=useSelector((store)=>store.generalData.ErrorData)
 
@@ -27,7 +28,7 @@ useEffect(()=>{
         videoFetch() ;
          //  console.log(selectDatavideo)
         }
-
+      dispatch(addShowLatestStatus(true))
     },[])
 
     
@@ -36,9 +37,9 @@ useEffect(()=>{
      
 
 try{
-    
+   
     const q=process.env.REACT_APP_YT_KEY
-const data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${p+"ll"}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20 `)
+const data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${q}&channelId=UCW9A1mvMHxVrGViwx4WCbcQ&part=snippet%2Cid&type=video&order=date&maxResults=20 `)
        
 const json = await data.json()
 
@@ -74,14 +75,14 @@ useEffect(() => {
 
 
     const liveVideo = selectDatavideo?.find((item) => item.snippet.liveBroadcastContent === "live");
-    setTopCard(liveVideo || selectDatavideo?.[0]); //if live then go for it otherwise latest one
+    setTopCard(liveVideo || selectOnlyVideos?.[0]); //if live then go for it otherwise latest one
 
-     liveVideo?dispatch(addVideoSkip(liveVideo)):dispatch(addVideoSkip(selectDatavideo[0]))  
+     liveVideo?dispatch(addVideoSkip(liveVideo)):dispatch(addVideoSkip(selectOnlyVideos[0]))   
 
 
 }, [selectDatavideo]);
 
-
+const selectIframeVideoTopViewStatus=useSelector((store)=>store.generalData.showLatestVideoStatus)
 
  
  //console.log(selectDatavideo)
@@ -116,18 +117,24 @@ const opts={
  <div className="  video-container">
 { topCard&&topCard.snippet.liveBroadcastContent === "live"? <span className="absolute bg-red-600 text-white top-0 z-20 p-1 rounded-md">Live video</span>:<div className="absolute bg-red-600 text-white top-0 z-20 p-1 rounded-md ">{!slectError && <span >Latest Video</span>}<span className="text-xs">{`${slectError ?  "check REDMIKE Youtube  channel for latest videos":""}`}</span></div>}
 {
-    !topCard && <CustomShimmerBox value={1} height={"440px"} bgt={"bg-black"} />
+    !topCard && <CustomShimmerBox value={1}  />
 }
-{topCard && <YouTube className=" topvideo" 
+{
+    //using same redux store for latest video and plylistvideo and topvidew 
+    selectIframeVideoTopViewStatus &&  <div className=" z-[100] relative flex justify-center flex-row "><div className="loader  absolute">   </div>   <span className="z-[300]" onClick={()=>dispatch(addShowLatestStatus(null))}> <XCircle color="gray"  size={28}/></span>  </div>
+}
+{topCard && <YouTube className=" topvideo sm:hover:bg-black sm:hover:opacity-80" 
 
 videoId={topCard?.id?.videoId}
 loading="loading...."
 title="THE REDMIKE"
 opts={opts}
 onReady={(event) => {
-    // You can access the player here if needed
-  /* event.target.playVideo();*/ 
+  dispatch(addShowLatestStatus(null))
   }}
+  onPlay={(event) => {
+    dispatch(addShowLatestStatus(null))
+    }}
 onEnd={onEnd}
 
 />
@@ -140,7 +147,8 @@ onEnd={onEnd}
     {topCard && <div>
         <div className="lg:mt-28">
     <div className="text-2xl font-extrabold p-2 m-3 lg:mb-4"><h1>{topCard?.snippet?.title}</h1></div>
-     <a href={`https://www.youtube.com/watch?v=${topCard?.id?.videoId}`} target="_blank" rel="noopener noreferrer"><div className="bg-red-500 text-whit p-2 w-44 ml-6 text-white font-semibold rounded-md"><button>Watch on Youtube</button></div></a>       
+     <a href={`https://www.youtube.com/watch?v=${topCard?.id?.videoId}`} target="_blank" rel="noopener noreferrer"><div className="bg-red-500 text-whit p-2 w-44 ml-6 text-white font-semibold rounded-md lg:ml-8"><button>Watch on Youtube</button></div></a>       
+        <p className="mt-9 ml-6 ">{topCard?.snippet?.description?.split(" ")?.slice(0,15)?.join(' ')}</p>
         </div>
         
         </div>}

@@ -41,15 +41,18 @@ scroll-snap-align: start;
   padding: 0;
   margin: 0;
 }
+
+
 .reelsContainer {
   margin-top: 2em;
   height: 90vh;
   width: 45vh;
   display: flex;
   gap: 1em;
-  overflow: auto;
+  overflow:auto;
   flex-direction: column;
   scroll-snap-type: y mandatory;
+
 }
 
 .reelsContainer::-webkit-scrollbar {
@@ -57,16 +60,54 @@ scroll-snap-align: start;
 }
 
 .reels {
-  width: 100%;  /* Full width of the container */
-  height: 100%; /* Full height, ensuring it matches the iframe height */
+  
+  width: 100%;  
+  height: 100%; 
   scroll-snap-align: start;
+
+
 }
 
 .reels iframe {
-  width: 100%;  /* Make iframe take the full width */
-  height: 70vh; /* Make iframe take the full height */
+  width: 100%; 
+  height: 80vh; 
   border: none;
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +173,60 @@ img{
   
 
 }
+.animate-spin-outline {
+  animation: spin-outline 5s linear infinite;
+  outline: 2px solid transparent;
+}
+@keyframes spin-outline {
+  0% {
+    outline-offset: -10px;
+    outline: 2px solid transparent;
+  }
+  100% {
+    outline-offset: 10px;
+    outline: 2px solid white; /* change #fff to your desired color */
+  }
+}
+
+
+
+
+
+.loader{
+  text-align: center;
+  font-size: 30px;
+  color: #FFF;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+.loader:after{
+  content: '.............';
+  position: relative;
+  z-index: 5;
+}
+.loader:before{
+  content: '';
+  height: 6px;
+  border: 1px solid;
+  border-radius: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background: linear-gradient(#FF3D00 100%, transparent 0) no-repeat;
+  background-size: 0% auto;
+  animation: 10s lineGrow linear infinite;
+}
+
+@keyframes lineGrow {to {  background-size: 100% auto}}
+
+
+
+
+
+
+
 
 
 

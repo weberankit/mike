@@ -1,7 +1,7 @@
 import { useState,useRef, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { Globe, House ,Youtube ,Icon8Square,Newspaper,List, XSquare, Instagram, TwitterX, Linkedin, PersonBadgeFill, Film} from "react-bootstrap-icons"
+import { Globe, House ,Youtube ,Icon8Square,Newspaper,List, XSquare, Instagram, TwitterX, Linkedin, PersonBadgeFill, Film, Facebook} from "react-bootstrap-icons"
 import { ImageLazyLoading } from "../helper"
 import { useLocation } from "react-router-dom"
 
@@ -93,7 +93,8 @@ if(scrollRef.current){
 },[])
 
     return(
-        <>
+        <header>
+        
 <div>
 <div className="">
 
@@ -109,7 +110,7 @@ if(scrollRef.current){
   <span><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@TheRedMike." > <Youtube color="red" size={24}/></a></span> 
    <span> <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/theredmike/?hl=en" >  <Instagram color="#d74672" size={24}/></a> </span>
    <span> <a target="_blank" rel="noopener noreferrer" href="https://x.com/TheRedMike" >  <TwitterX size={24}/></a></span>
-   <span><a target="_blank" rel="noopener noreferrer" href="#" >    <Linkedin  size={24}/></a> </span>
+   <span><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/TheRedMikeMovement" >    <Facebook size={24}/></a> </span>
     
     </div></div> 
 
@@ -121,19 +122,30 @@ if(scrollRef.current){
 </div>
 </div>
 
+{
+///navar for large screen
+}
 
-<div ref={scrollRef} className="  font-sans text-sm font-semibold border-t-gray-300 mt-3 border-t border-b-gray-300 border-b p-2  hidden  sm:flex flex-row justify-between ">
+<div ref={scrollRef} className={` ${hideTopUp && "mt-0"} font-sans text-sm font-semibold border-t-gray-300 mt-3 border-t border-b-gray-300 border-b p-2  hidden  sm:flex flex-row justify-between `}>
 <div className=" flex flex-row justify-around  w-1/5">
     
-<Link to={"/"}>   <div  className={`${location.pathname==="/" ? "text-red-600":"text-black"} flex flex-row flex-nowrap p-2 text-center`}      ><House className="text-orange-400 sm:rounded-lg sm:w-5 sm:h-5" size={24}/> <span className="ml-1">HOME </span> </div></Link> 
-{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div  className={`${location.pathname===`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}` ? "text-red-600":"text-black"} flex flex-row flex-nowrap p-2 text-center `}  ><Youtube className="text-red-600 sm:rounded-lg sm:w-5 sm:h-5"  size={24}/><span className="ml-1">SHORTS</span></div></Link> }
+<Link to={"/"}>   <div  className={`${location.pathname==="/" ? "text-red-600 border-b-2 border-black  ":"text-black"} flex flex-row flex-nowrap p-2 text-center`}      ><House className="text-orange-400 sm:rounded-lg sm:w-5 sm:h-5" size={24}/> <span className="ml-1 ">HOME </span> </div></Link> 
+{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div  className={`${location.pathname===`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}` ? "text-red-600 border-b-2 border-black ":"text-black"} flex flex-row flex-nowrap p-2 text-center `}  >
+
+<svg className="text-red-600 sm:rounded-lg sm:w-5 sm:h-5"  viewBox="0 0 98.94 122.88">
+  <path fill="#F40407" d="M63.49,2.71c11.59-6.04,25.94-1.64,32.04,9.83c6.1,11.47,1.65,25.66-9.94,31.7l-9.53,5.01 c8.21,0.3,16.04,4.81,20.14,12.52c6.1,11.47,1.66,25.66-9.94,31.7l-50.82,26.7c-11.59,6.04-25.94,1.64-32.04-9.83 c-6.1-11.47-1.65-25.66,9.94-31.7l9.53-5.01c-8.21-0.3-16.04-4.81-20.14-12.52c-6.1-11.47-1.65-25.66,9.94-31.7L63.49,2.71 L63.49,2.71z M36.06,42.53l30.76,18.99l-30.76,18.9V42.53L36.06,42.53z"/>
+</svg><span className="ml-1">SHORTS</span>
+</div>
+</Link> 
+
+}
 </div>
 <div className="flex flex-row justify-between  w-1/3">
 {navLinks.map((item,index)=>{
     
     return(
         <div key={item.path}>
-    <Link to={item.path}>   <div  className={ `${location.pathname ===`${item.path}` ? "text-red-600" : "text-black"} flex flex-row flex-nowrap p-2 text-center `} >
+    <Link to={item.path}>   <div  className={ `${location.pathname ===`${item.path}` ? "text-red-600  border-b-2 border-black " : "text-black"} flex flex-row flex-nowrap p-2 text-center `} >
   <span className=" hidden lg:block ">   {item.icon}</span> <span className="ml-1 sm:w-20 truncate md:w-24" >{item.navName}</span> 
       
 
@@ -145,8 +157,8 @@ if(scrollRef.current){
 
       </div>
 <div className="flex flex-row w-1/4 justify-around">
-<Link to={"/"}>   <div  className={`p-2 flex flex-row justify-center  `}><Film className="hidden lg:block sm:w-5 sm:h-5" size={24}/><span className="ml-1">Advertisement</span></div></Link> 
-<Link to={"/"}>   <div  className={` p-2 flex flex-row justify-center  `}><PersonBadgeFill className=" hidden lg:block sm:w-5 sm:h-5" size={24}/> <span className="ml-1">Contact</span></div></Link> 
+<Link to={"/advertise"}>   <div  className={`p-2 flex flex-row justify-center  ${location.pathname==="/advertise"?"text-red-500 ":"text-black"}`}><Film className="hidden lg:block sm:w-5 sm:h-5" size={24}/><span className="ml-1">Advertisement</span></div></Link> 
+<Link to={"/contact"}>   <div  className={` p-2 flex flex-row justify-center  `}><PersonBadgeFill className=" hidden lg:block sm:w-5 sm:h-5" size={24}/> <span className="ml-1">Contact</span></div></Link> 
 </div>
 
 </div>
@@ -155,11 +167,16 @@ if(scrollRef.current){
 
 {
     /**
-     * showing bar when parmasa is hiiden for playlist and other route
+     * showing bar button when scrren is small 
      */
 }
 <div className={` ${(hideTopUp === "hidden") ? "block": "hidden" } sm:hidden  p-2 mt-2 text-black font-bold`} onClick={()=>setNavBar(!navBar)}><List size={35}/></div>
 
+
+
+{
+    /// navabr for small screen
+}
 
 <div ref={hideRef} className={ `  ${ navBar ? "left-0" :"-left-full"} z-[120] sm:hidden   fixed  flex flex-col justify-between bg-red-600 w-4/5 top-0  rounded-r-xl`}>
 
@@ -171,7 +188,7 @@ if(scrollRef.current){
   <span><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@TheRedMike." > <Youtube size={24}/></a></span> 
    <span> <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/theredmike/?hl=en" >  <Instagram size={24}/></a> </span>
    <span> <a target="_blank" rel="noopener noreferrer" href="https://x.com/TheRedMike" >  <TwitterX size={24}/></a></span>
-   <span><a target="_blank" rel="noopener noreferrer" href="#" >    <Linkedin size={24}/></a> </span>
+   <span><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/TheRedMikeMovement" >    <Facebook size={24}/></a> </span>
     
     </div></div> 
 <button className="absolute right-0 top-0 text-white sm:hover:text-black"  onClick={()=>setNavBar(!navBar)}><XSquare size={35}/></button>
@@ -182,9 +199,9 @@ if(scrollRef.current){
 <ul className="mt-16">
 
 
-<Link to={"/"}>   <div  className={`p-4 text-center border border-gray-200 text-white text-xl  flex flex-row justify-center  `}><House className="mr-6 mt-1" size={24}/>Home</div></Link> 
+<Link to={"/"}>   <div  className={`p-4 text-center border border-gray-200 ${location.pathname === "/" ? "text-black":"text-white"} text-xl  flex flex-row justify-center  `}><House className="mr-6 mt-1" size={24}/>Home</div></Link> 
 
-{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div className={`p-4 text-center border border-gray-200 text-white text-xl  flex flex-row justify-center  `}><Youtube className="mr-6 mt-2" size={24}/>shorts</div></Link> }
+{selectDataShorts?.length>0 && <Link to={`/shorts/${selectDataShorts[0]?.snippet?.resourceId?.videoId}`}>   <div className={`p-4 text-center border border-gray-200 ${location.pathname === "/"?"text-black":"text-white"} text-white text-xl  flex flex-row justify-center  `}><Youtube className="mr-6 mt-2" size={24}/>shorts</div></Link> }
 
 
         
@@ -195,7 +212,7 @@ if(scrollRef.current){
     
     return(
         <div key={item.path}>
-    <Link to={item.path}>   <div  className={`p-4 text-center border border-gray-200 text-white text-xl  flex flex-row justify-center  `}>
+    <Link to={item.path} onClick={()=>setNavBar(!navBar)} >   <div  className={`${location.pathname === item.path ?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}>
      {item.icon}  {item.navName}
       
 
@@ -203,8 +220,8 @@ if(scrollRef.current){
         </div>
     )
 })}
-<Link to={"/"}>   <div  className={`  p-4 text-center border border-gray-200 text-white text-xl  flex flex-row justify-center  `}><Film className="mr-11  mt-1" size={24}/>Advertisement</div></Link> 
-<Link to={"/"}>   <div  className={`  p-4 text-center border border-gray-200 text-white text-xl  flex flex-row justify-center  `}><PersonBadgeFill className="mr-11  mt-1 " size={24}/>Contact</div></Link> 
+<Link to={"/advertise"}>   <div  className={` ${location.pathname==="/advertise" ?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}><Film className="mr-11  mt-1" size={24}/>Advertisement</div></Link> 
+<Link to={"/"}>   <div  className={` ${location.pathname === "/contact"?"text-black":"text-white"} p-4 text-center border border-gray-200  text-xl  flex flex-row justify-center  `}><PersonBadgeFill className="mr-11  mt-1 " size={24}/>Contact</div></Link> 
 
 </ul>
 
@@ -224,7 +241,7 @@ if(scrollRef.current){
 </div>
 </div>
 
-        </>
+        </header>
     )
 }
 export default Header

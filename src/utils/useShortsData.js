@@ -10,7 +10,7 @@ const useShortsData=()=>{
       try{
 
         
-  const data = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.REACT_APP_YT_KEY+"PPP"}&playlistId=UUSHW9A1mvMHxVrGViwx4WCbcQ&part=snippet,id&maxResults=15`)
+  const data = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.REACT_APP_YT_KEY}&playlistId=UUSHW9A1mvMHxVrGViwx4WCbcQ&part=snippet,id&maxResults=15`)
            
    const json = await data.json()
    

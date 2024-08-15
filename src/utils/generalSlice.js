@@ -7,7 +7,8 @@ initialState:{
     videoSkip:null,
     videoDescData:null,
     ErrorData:null,
-    iframeVideo:null
+    iframeVideo:null,
+    showLatestVideoStatus:null
 }
 ,
 reducers:{
@@ -28,6 +29,9 @@ reducers:{
     },
     addiframeVideo:(state,action)=>{
         state.iframeVideo=action.payload
+    },
+    addShowLatestStatus:(state,action)=>{
+        state.showLatestVideoStatus=action.payload
     }
 }
 
@@ -35,4 +39,4 @@ reducers:{
 
 })
 export default generalSlice.reducer
-export const {addToogleNav,addVideoSkip,addVideoDescData,addError,addiframeVideo} = generalSlice.actions
+export const {addToogleNav,addVideoSkip,addVideoDescData,addError,addiframeVideo,addShowLatestStatus} = generalSlice.actions

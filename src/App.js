@@ -11,8 +11,10 @@ import { useCallback } from "react";
 import useCheckOnline from "./utils/useCheckOnline";
 import { lazy ,Suspense} from "react";
 import Error from "./Components/Error";
-
-
+import Contact from "./Components/Contact";
+import Advertise from "./Components/Advertise";
+import About from "./Components/About";
+import TermOFUse from "./Components/TermOfUse"
 
 
 const PlaylistLazy = lazy(() => import('./Components/Playlist'));
@@ -57,8 +59,24 @@ const configPath=createBrowserRouter([
  {
   path:"/playlist/:id",
   element: <Suspense fallback="Loading the data wait for a seconds....."><PlaylistLazy/></Suspense>
+ },
+ {
+  path:"/contact",
+  element:<Contact/>
  }
-  
+  ,
+  {
+    path:"/advertise",
+    element:<Advertise/>
+   },{
+    path:"/about",
+    element:<About/>
+   },
+   {
+    path:"/termofuse",
+    element:<TermOFUse/>
+   }
+    
 
 
 

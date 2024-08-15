@@ -10,7 +10,7 @@ import { useParams ,Link} from "react-router-dom";
 import { storeDataTorefreshPage } from "../helper";
 import YouTube from "react-youtube";
 import { addiframeVideo } from "../utils/generalSlice";
-import { XCircle } from "react-bootstrap-icons";
+import {  ArrowUp, CaretDownFill,XCircle } from "react-bootstrap-icons";
 import Header from "./Header";
 //import Frame from "./Frame";
 //import { useSelector } from "react-redux";
@@ -30,7 +30,7 @@ useEffect(()=>{
 
 
 
-dispatch(addiframeVideo("loading video ..... wait"))
+dispatch(addiframeVideo(true))
 setAdd(()=>{
     if(!selectDataShorts) return null
    const arr=   selectDataShorts.filter((item)=>{
@@ -91,19 +91,17 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
    
    },[selectIframestatus])
     
-  function handleScrollUp(){
 
-  
 
-    const refValue = scrollRef.current;
-    refValue.scrollBy(0,50)
-//    console.log(refValue)
+  function handleScrollUp(e){
+const refValue = scrollRef.current;
+refValue.scrollBy(0,-0);
+    console.log(refValue.scrollBy)
+ 
+} 
 
-  } 
-  function handleScrollDown(){
-    const refValue=scrollRef.current
-    refValue.scrollBy(0,-50)
-  } 
+
+
 
 
   const onReady = (event) => {
@@ -117,50 +115,76 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
 
   const onError = (event) => {
     console.error('An error occurred:', event.data);
+    setIndicate(true)
     // 
-    dispatch(addiframeVideo("something went wrong refershpage"))
+   // dispatch(addiframeVideo("something went wrong refershpage"))
   }
 /* listType: 'playlist',
         list:id,
         playlist:id, */
   const opts = {
    
-    playerVars: {
+   /* playerVars: {
        
         autoplay: 0,
         loop: 1,
        
-      } }
+      } */
+        playerVars: {
+          // Hide video title and related video info
+              modestbranding: 1, // Reduces YouTube branding
+                autoPlay:0,
+                mute: 0,
+                rel:0,
+                controls:1,
+            },
+    
+    
+    
+    }
  
 
 
+    const onEnd = (event) => {
+      event.target.seekTo(0); // Seek to the beginning of the video
+    }; 
 
+const onPlay=(event)=>{
+  dispatch(addiframeVideo(null))
+}
 
+const getElement=document.querySelector(".reelsContainer")
 
-
-
-
-
+if(getElement){
+console.log(getElement)
+getElement.focus() 
+}
 
 return(
     <>
 
     <Header hideTopUp={"hidden"}/>
-  <Link to={"/"}>  <span className="bg-white absolute top-9"><button>Home</button></span> </Link> 
- {selectIframestatus && <div className="bg-white p-2 fixed top-12">{selectIframestatus} <div onClick={()=>dispatch(addiframeVideo(null))}> <XCircle/></div></div>}
+ 
 
 
+ { selectIframestatus && <div className=" z-[1000] relative flex justify-center flex-row "><div className="loader  absolute">   </div>   <span className="z-[300]" onClick={()=>dispatch(addiframeVideo(null))}> <XCircle size={28}/></span>  </div>}
+
+{indicate && <p className="text-red-600 z-[1000]">something went wrong please Refresh page</p>}
+
+ <button className=" hidden  bg-red-500 text-white absolute h-6 right-0 top-1/2  " onClick={(e)=>{handleScrollUp(e)}}><CaretDownFill color="white" size={40}/></button>
+
+    <div style={{display:"flex",justifyContent:"center" ,flexDirection:"row"}} className="bg-black h-full sm:p-7">
 
 
-    <div style={{display:"flex",justifyContent:"center" ,flexDirection:"row"}} className="bg-black h-full p-7">
- <button className="bg-white text-black absolute h-6 right-0 top-1/2  " onClick={()=>{handleScrollUp()}}>scrollDown</button>
     
-
-    <div ref={scrollRef}  className="reelsContainer bg-blue-500">
+{
+  //this contrlling all s
+}
+    <div  ref={scrollRef}  className="reelsContainer bg-black w-[1500px]">
    
 
 {
-    shortsAdd&& shortsAdd.slice(0,9).map(item2 => {
+    shortsAdd&& shortsAdd.slice(0,9).map((item2,index) => {
        
     // console.log(item2.snippet.resourceId.videoId)
     
@@ -171,13 +195,18 @@ return(
 
 return(
    
+< div tabindex={index} className=" sm:w-1/2 lg:w-1/3 sm:m-auto">
 
-<YouTube key={item2.snippet.resourceId.videoId} className="reels"   videoId={item2.snippet.resourceId.videoId}
+<YouTube key={item2.snippet.resourceId.videoId}  className="reels"    videoId={item2.snippet.resourceId.videoId}
   opts={opts}
   onReady={onReady}
- 
+  onEnd={onEnd}
   onError={onError}
+  onPlay={onPlay}
 />
+
+</div>
+
 )
 
     })
@@ -190,7 +219,7 @@ return(
 
  </div> 
 
-<button className="bg-white text-black absolute h-6 left-0 top-1/2  " onClick={()=>{handleScrollDown()}}>scrollUp</button>
+<button className="  text-white absolute h-6 left-1/3 top-1/2   hidden " ><ArrowUp size={40} color="white"/></button>
 
  </div>
 </>

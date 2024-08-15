@@ -20,7 +20,7 @@ export function titlePlay(id){
    
     } else if(id === "PLF_A6dNxTXazPGTqnPdrS4ZFmoAzu_k6w"){
       //breaking
-      return "Breaking"
+      return "Breaking News"
     
     }else if(id==="PLF_A6dNxTXazVWmkHf3uQtV9xAI9MzjdB"){
      return "TRM-duniya"
