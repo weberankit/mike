@@ -1,5 +1,5 @@
 body {
-  overscroll-behavior-y: contain;
+ 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -80,9 +80,37 @@ scroll-snap-align: start;
 
 
 
+/*scrollbar design*/
 
+/* Scrollbar design */
+::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+  height: 10px; /* Set the height of the scrollbar */
+}
 
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #333; /* Set the color of the scrollbar thumb */
+  border-radius: 10px; /* Set the border radius of the scrollbar thumb */
+}
 
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the color of the scrollbar track */
+  border-radius: 10px; /* Set the border radius of the scrollbar track */
+}
+
+/* Scrollbar button (up and down) */
+::-webkit-scrollbar-button {
+  background-color: #333; /* Set the color of the scrollbar button */
+  border-radius: 10px; /* Set the border radius of the scrollbar button */
+}
+
+/* Scrollbar corner (bottom-right) */
+::-webkit-scrollbar-corner {
+  background-color: #333; /* Set the color of the scrollbar corner */
+  border-radius: 10px; /* Set the border radius of the scrollbar corner */
+}
 
 
 

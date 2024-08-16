@@ -90,7 +90,21 @@ const configPath=createBrowserRouter([
 
 
 
+const body = document.body;
 
+// Add event listener for scroll
+window.addEventListener('scroll', () => {
+  // Check if user is scrolling up fast
+  if (window.scrollY < 100 && window.scrollY > 0 && window.scrollY < window.oldScrollY) {
+    // Add CSS property to body
+    body.style.overscrollBehaviorY = 'contain';
+  } else if (window.scrollY === 0) {
+    // Remove CSS property when user is at top of page
+    body.style.overscrollBehaviorY = '';
+  }
+  // Update old scroll position
+  window.oldScrollY = window.scrollY;
+}, { passive: true });
 
 
 
