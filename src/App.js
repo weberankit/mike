@@ -38,7 +38,13 @@ function App() {
  // Hide the loading indicator when the page has fully loaded
  //to ensure 100% 
  document.getElementById("loading-overlay").style.display = "none";
+
+
+
+
  //removing it when unmounted --
+
+
   return(()=>window.removeEventListener("load",callBackToUnLoad))
  },[])
 
@@ -81,6 +87,9 @@ const configPath=createBrowserRouter([
 
 
 ])
+
+
+
 
 
 

@@ -17,7 +17,7 @@ const VideoList=()=>{
    const dispatch=useDispatch()
    //using to exclde shrot video
 useFilterVideo()
-//if user move to playvideo-page and if they refersh page  so to prevent tdata loss
+//if user move to playvideoi.e latestvideosOlay-page and if they refersh page  so to prevent data loss we store it and use when refresh
  storeDataTorefreshPage(selectOnlyVideos,"dataFor")
 
 

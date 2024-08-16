@@ -122,8 +122,8 @@ onEnd={onEnd}
 
 {
     selectOnlyVideos&&selectOnlyVideos.map((item,index)=>{
-        //skip the playinf video
-        if(item.id.videoId !== idValue){
+        //skip the playinf video and upcoming here and opertion think like T T = T, T F = F ,F T = F 
+        if(item.id.videoId !== idValue && item?.snippet?.liveBroadcastContent !== "upcoming"){
             console.log(item)
         return(
             <div className="topvideo relative"  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
