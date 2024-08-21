@@ -143,7 +143,7 @@ const onbanner=useCallback(()=>{
 
     return(
         <>
-{showMsg && <OpenMsgbox className="bg-black absolute w-full " videoIdval={topCard?.id?.videoId} setShowMsg={()=>onMessage()} setVideoStop={()=>onbanner()}/>
+{showMsg && <OpenMsgbox className=" " videoIdval={topCard?.id?.videoId} setShowMsg={()=>onMessage()} setVideoStop={()=>onbanner()}/>
 }
   <div>
     <div>
@@ -171,7 +171,7 @@ const onbanner=useCallback(()=>{
             <div className="mt-4 sm:mt-40 text-center ">
                 <div className=" w-1/2 bg-white rounded-md p-9 m-auto">
                   Moving to Youtube .. in  1seconds..
-                  {showMsg&&<p className="text-red-700">please check  pop up in browser</p>}
+                  {/*showMsg&&<p className="text-red-700">please check  pop up in browser</p>*/}
                 </div>
                 </div>
         </div>
@@ -219,7 +219,7 @@ allowed?setVideoStop(false):setVideoStop(true)
 
       },6000)
 
-     }
+     } 
 
     }}
 
