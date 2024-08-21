@@ -8,7 +8,7 @@ const OpenMsgbox=({videoIdval,setShowMsg,setVideoStop})=>{
 return(
 <>
 <div className="absolute z-[200]  rounded-lg   animate-slide-down xs:top-[15%]  top-1/4 sm:top-1/2    bg-black h-[200px] w-full">
-<div className=" top-0 text-white w-56  cursor-pointer" onClick={()=>{setShowMsg()}} ><X size={20}/></div>
+<div className=" top-0 text-white w-56  cursor-pointer" onClick={()=>{setShowMsg();setVideoStop()}} ><X size={20}/></div>
 <div className="flex justify-center ">
 
     <div className=" px-7 py-2 rounded-md mt-10">
