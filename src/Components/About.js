@@ -23,8 +23,8 @@ const About = () => {
               <div className="bg-gray-100 p-10 rounded-3xl shadow-2xl max-w-3xl text-center transform hover:scale-105 transition-transform duration-500 ease-in-out">
                 <h1 className="text-5xl font-extrabold text-gray-800 mb-6">About The REDMIKE</h1>
                 <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                The Red Mike has been conceptualised as a voice of reason and logic. To say what is right, not what is popular. 
-                The REDMIKE is a dynamic  news channel led by a passionate team of creators dedicated to bringing you the latest and most impactful stories from around the globe.
+                
+The Red Mike is a new movement in Journalism. We tell your stories. Ground reports the way they should be. To say what’s right, and not what is just popular. Stories from India & around the world that impact and affect you. Your Mike. Your Story
                 </p>
               </div>
             </div>

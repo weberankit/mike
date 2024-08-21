@@ -1,7 +1,7 @@
 import { useState,useRef, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { Globe, House ,Youtube ,Icon8Square,Newspaper,List, XSquare, Instagram, TwitterX, Linkedin, PersonBadgeFill, Film, Facebook} from "react-bootstrap-icons"
+import { Globe, House ,Youtube ,Icon8Square,Newspaper,List, XSquare, Instagram, TwitterX, Linkedin, PersonBadgeFill, Film, Facebook, ArrowUpRight} from "react-bootstrap-icons"
 import { ImageLazyLoading } from "../helper"
 import { useLocation } from "react-router-dom"
 
@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom"
 
 const Header=({hideTopUp})=>{
     const selectDataShorts=useSelector((store)=>store.dataSliced.allShorts) 
+    const [imgFlip, setImgFlip] = useState("https://ucarecdn.com/b72e10c9-b715-43ca-8665-559cce335652/Logo_Final_Hindi_page0001.jpg" )
 const imgRef = useRef()
 const location =useLocation()
 console.log(location)
@@ -59,10 +60,15 @@ function hideNavout(e){
 useEffect(()=>{
 window.addEventListener("mousedown",hideNavout)
 
-window.addEventListener("scroll",scrollHide)
+ window.addEventListener("scroll",scrollHide)
+let timer= setTimeout(()=>{
+setImgFlip("https://ucarecdn.com/77cf9e5c-412a-4a14-b31a-a773e0256d18/Logo_Final_ENglish_page0001.jpg")
+
+},2000)
 
 return(()=>{window.removeEventListener("mousedown",hideNavout);
-            window.removeEventListener("scroll",scrollHide)
+            window.removeEventListener("scroll",scrollHide);
+            clearTimeout(timer)
 })
 
 },[])
@@ -104,7 +110,7 @@ if(scrollRef.current){
 <div className="flex flex-row justify-between sm:w-4/5 sm:m-auto  mt-1">
 <div className="sm:hidden p-2 mt-2 text-black font-bold" onClick={()=>setNavBar(!navBar)}><List size={35}/></div>
 
-<div className="  sm:ml-2 "><div className="blur-load " style={{ backgroundImage: 'url(' + require('../image/smallmike.png') + ')'}}><img  onLoad={(e)=>ImageLazyLoading(e,imgRef.current)} ref={imgRef} loading="lazy" className=" mt-2 w-12 sm:w-20 object-cover rounded-full  animate-pulse   transition-opacity duration-300 opacity-0" src="https://ucarecdn.com/90da0f60-21e5-4b6c-affc-3879ade004fc/miked.png" alt="logo-of-site"></img></div></div>
+<div className="  sm:ml-2 "><div className="blur-load" style={{ backgroundImage: 'url(' + require('../image/smallmike.png') + ')'}}><img  onLoad={(e)=>ImageLazyLoading(e,imgRef.current)} src={ imgFlip } loading="lazy" className={`mt-2 sm:mt-4 w-14 sm:w-20 rounded-xl  object-cover      transition-opacity duration-300 opacity-0 `} ref={imgRef} alt="logo-of-site"></img></div></div>
 
 <div className=" hidden sm:block  pt-10 w-1/3"><div className=" m-auto  flex flex-row justify-between  sm:hover:text-black">
   <span><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@TheRedMike." > <Youtube color="red" size={24}/></a></span> 
@@ -114,7 +120,7 @@ if(scrollRef.current){
     
     </div></div> 
 
-<a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@TheRedMike." ><div className="p-2 mt-2 sm:mt-7"><button className="bg-red-500 text-white font-serif px-2 py-1 rounded-md sm:hover:bg-black">Subscribe⭷</button></div></a>
+<a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@TheRedMike." ><div className="p-2 mt-2 sm:mt-7"><button className="bg-red-500 text-white font-serif px-2 py-1 rounded-md sm:hover:bg-black flex flex-row">Subscribe<ArrowUpRight className="mt-1" color="white"/> </button></div></a>
 
 
 

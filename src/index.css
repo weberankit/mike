@@ -11,6 +11,23 @@ body {
  
   
 }
+
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 1s ease-out forwards;
+}
+
+
+
 /*
 .reelsContainer{
   margin-top: 2em;
@@ -111,7 +128,6 @@ scroll-snap-align: start;
   background-color: #333; /* Set the color of the scrollbar corner */
   border-radius: 10px; /* Set the border radius of the scrollbar corner */
 }
-
 
 
 
@@ -272,4 +288,11 @@ img{
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
 }
+
+
+
+
+
+
+
 }

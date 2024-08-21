@@ -76,7 +76,7 @@ const Footer = () => {
                         alt="logo-img"
                         src="https://ucarecdn.com/90da0f60-21e5-4b6c-affc-3879ade004fc/miked.png"
                     />
-                    <div className="grid grid-cols-2 gap-8 text-center sm:text-left">
+                    <div className="grid grid-col-1 sm:grid-cols-2 gap-8 text-center sm:text-left">
                         <div>
                             <ul className="space-y-2">
                                 <li>
@@ -95,7 +95,7 @@ const Footer = () => {
                             <div className="bg-red-500 text-white p-2 rounded-lg mb-4 text-center">
                                 Our Other Playlists 👇
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                 <a
                                     className="text-red-500 hover:text-white transition-colors"
                                     href="https://youtube.com/playlist?list=PLF_A6dNxTXaxoDfS4ILr-9byuzF-_EYu8&si=hVWUrcQZDH6L2b-t"
@@ -128,6 +128,58 @@ const Footer = () => {
                                 >
                                     TRM GROUND REPORTS
                                 </a>
+
+
+
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors"
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXazZTlRzFK9yDcQ7cZqE9npG&si=JF6NQ9F-WmB8fxSh"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                TRM DIALOGUES
+                                </a>
+
+
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors"
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXayorbRdKheFy7EmvsnwFzNH&si=1wt-wBdJQRN9h8-h"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                Dil se with Kapil Sibal
+                                </a>
+
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors"
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXaz0y32K7sPEXJ3dGpA-1USX&si=_fW3voVY4zK-fbRl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                 Election Interviews
+                                </a>
+                              
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors"
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXawTmvV2FZusjW3ZeGPHHzn3&si=DT5hYYozgvyEBr7E"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                 Elections 2024
+                                </a>
+
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors hidden sm:block"
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXax9CbiaNS2h4-lLAtiZN4Kf&si=5rDG-6Ry80pIKL4-"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                 Kanoon Ki Pathshala
+                                </a>
+
+
+
+
                             </div>
                         </div>
                     </div>

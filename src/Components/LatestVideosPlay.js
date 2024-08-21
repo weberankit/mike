@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react"
+import { useState,useEffect ,useCallback} from "react"
 import { useParams ,useNavigate} from "react-router-dom"
 import { useSelector,useDispatch } from "react-redux"
 import { addShowLatestStatus, addVideoDescData } from "../utils/generalSlice"
@@ -8,11 +8,14 @@ import { Play } from "react-bootstrap-icons"
 import Header from "./Header"
 import CustomShimmerBox from "./CustomShimmerBox"
 import { XCircle } from "react-bootstrap-icons"
+import OpenMsgbox from "./OpenMsgbox"
 //import { Behance } from "react-bootstrap-icons"
 const LatestVideosPlay=()=>{
    
     const {id} = useParams()
     const [idValue, setIdValue] = useState(id)
+    const [videoStop,setVideoStop] = useState(null)
+const [showMsg , setShowMsg] = useState(null)
     //if user refersh page then get data from local storage
     const selectOnlyVideos=useSelector((store)=>store.dataSliced.onlyVideos)|| JSON.parse(localStorage.getItem("dataFor"))
    const dispatch=useDispatch()
@@ -57,10 +60,19 @@ useEffect(()=>{
 dispatch(addShowLatestStatus(true))
 },[idValue])
 
-
+const onMessage=useCallback(()=>{
+  setShowMsg(null)
+  },[])
+  
+  const onbanner=useCallback(()=>{
+      setVideoStop(false)
+      },[])
+      
 
     return(
         <>
+         {showMsg && <OpenMsgbox className="bg-black absolute w-full " videoIdval={idValue} setShowMsg={()=>onMessage()} setVideoStop={()=>onbanner()}/>
+        }
         <Header  hideTopUp={"hidden"}/>
       {!selectOnlyVideos && <div><CustomShimmerBox value={1}/></div>}
 
@@ -71,7 +83,21 @@ dispatch(addShowLatestStatus(true))
  <div className=" w-full sm:w-[60%] ">
    <div className="w-full ">
 <div className="video-container sm:mt-12">
+    
     {selectIframeStatus &&  <div className=" z-[100] relative flex justify-center flex-row "><div className="loader  absolute">   </div>   <span className="z-[300]" onClick={()=>dispatch(addShowLatestStatus(null))}> <XCircle color="gray"  size={28}/></span>  </div>}
+    {//using for banner to stop video
+    videoStop && <div className="relative z-[10]">
+    <div className="absolute bg-red-500 w-full h-[1000px] animate-slide-down">
+        <div className="mt-4 sm:mt-40 text-center ">
+            <div className=" w-1/2 bg-white rounded-md p-9 m-auto">
+              Moving to Youtube .. in  1seconds..
+              {showMsg&&<p className="text-red-700">please check  pop up in browser</p>}
+            </div>
+            </div>
+    </div>
+</div>
+}
+    
     <YouTube  
 className="topvideo"
 videoId={idValue} 
@@ -86,6 +112,37 @@ onReady={(event) => {
   onPlay={()=>{
     dispatch(addShowLatestStatus(null))
   }}
+
+  onStateChange={(event) => {
+    //  console.log(event.data, "this is event", event.target.getCurrentTime());
+      
+    
+if(event.data === 1){
+          
+setTimeout(()=>{
+   event.target.pauseVideo()
+   setVideoStop(true)
+  
+      setTimeout(()=>{
+
+   const allowed= window.open(`https://www.youtube.com/watch?v=${idValue}`,'_blank')
+
+   if(!allowed){
+    setShowMsg(true)
+    }
+    //video stopper remove
+    allowed?setVideoStop(false):setVideoStop(true)
+
+},2000)
+
+  
+
+    },6000)
+
+   }
+
+  }}
+
 onEnd={onEnd}
 
 />
@@ -103,7 +160,7 @@ onEnd={onEnd}
  
  
   
-{slectError &&  <p className="text-red-500 w-44"> slectError </p>}
+{slectError &&  <p className="text-red-500 w-1/2"> ${slectError} </p>}
 
  
 </div>
@@ -126,11 +183,17 @@ onEnd={onEnd}
         if(item.id.videoId !== idValue && item?.snippet?.liveBroadcastContent !== "upcoming"){
             console.log(item)
         return(
-            <div className="topvideo relative"  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
+          <div className="flex xs:flex-col flex-row sm:flex-col">
+            <div className="topvideo "  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
+                  <div className="relative">
                   <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
-            <img key={item.snippet.thumbnails.high.url} className={`p-2 rounded-3xl ${item?.snippet?.liveBroadcastContent === "live" && "border border-dotted border-black w-full"} `}   src={item?.snippet?.liveBroadcastContent === "live"? liveImg : item.snippet.thumbnails.high.url}
+            <img key={item.snippet.thumbnails.medium.url} className={` p-2 rounded-3xl ${item?.snippet?.liveBroadcastContent === "live" && "border border-dotted border-black w-full"} `}   src={item?.snippet?.liveBroadcastContent === "live"? liveImg : item.snippet.thumbnails.medium.url}
                             alt={item.snippet.title}></img>
+</div>
+
                             <h1>{/*item?.snippet?.liveBroadcastContent === "live"?"live":""*/}</h1>
+            </div>
+            <div className=" w-1/2 xs:w-full xs:text-base text-xl sm:w-[90%] p-1 sm:text-sm lg:font-semibold"> {item.snippet.title}</div>
             </div>
         )}
     })

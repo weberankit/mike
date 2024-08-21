@@ -5,7 +5,8 @@ const playlistSlice=createSlice({
     initialState:{
         playListData:{
 
-        }
+        },
+        videoStop:null
         
     }
 ,
@@ -23,10 +24,16 @@ reducers:{
     
     
     
-       }
+       },
+
+
+videoDirect:(state,action)=>{
+  state.action=action.payload
+}
+
 }
 
 })
 
 export default playlistSlice.reducer
-export const {addPlayListData} =playlistSlice.actions
+export const {addPlayListData,videoDirect} =playlistSlice.actions

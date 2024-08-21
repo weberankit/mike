@@ -20,12 +20,13 @@ const Advertise=()=>{
     Looking to reach a dynamic and engaged audience? At The REDMIKE, we provide reliable and truthful news, 
     keeping our viewers informed and up-to-date. Our growing following includes:
     <ul className="list-disc list-inside mt-4 mb-4 text-gray-300">
-      <li>YouTube: 642,000 subscribers</li>
+      <li>YouTube: 642,000+ subscribers</li>
       <li>Twitter: 25,000+ followers</li>
       <li>Instagram: 59,700 followers</li>
     </ul>
     Partner with us to amplify your message and connect with a diverse audience across our platforms. 
-    We offer tailored advertising solutions to meet your specific needs and goals.
+    We offer tailored advertising solutions to meet your specific needs and goals. For advertisement & Sponsorship Email us at - ads@theredmike.com 
+    WhatsApp Number: +91- 9811019888 or 
   </p>
  <Link to="/contact"> <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
     Contact Us

@@ -55,14 +55,14 @@ const handleScrollRight = () => {
         <h1 className="p-1 font-bold text-xl font-mono  ml-8 sm:ml-12  ">LATEST</h1>
           <div  
       
-          className="flex flex-row "
+          className=" flex flex-row "
            >
 {selectOnlyVideos && <button onClick={handleScrollLeft} className="hidden sm:block"><CaretLeftFill   size={50} /> </button>
 }
 
 
 
-    <div ref={scrollRef} className="flex overflow-x-scroll no-scrollbar" onMouseMove={(e)=>handleMove(e)}>
+    <div ref={scrollRef} className="flex flex-col   sm:flex-row  sm:overflow-x-scroll no-scrollbar" onMouseMove={(e)=>handleMove(e)}>
 {
     !selectOnlyVideos && <div className="  flex flex-row "> <CustomShimmerBox value={5} /></div>
 }
@@ -81,17 +81,19 @@ const handleScrollRight = () => {
             .map((card,index) => {
                 return (
                  <Link to={`/latestVideo/${card.id.videoId}`} key={card.id.videoId} onClick={()=>dispatch(addVideoDescData(card))}>  
-                  <div className="">
-                     <div className=" w-96 m-2 rounded-2xl relative">
-                        <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
+                  <div className="flex  sm:flex-col flex-row justify-center">
+                     <div className="  w-1/2 sm:w-96 m-2 rounded-2xl relative">
+                        <div className=" xs:hidden   absolute top-1/2 text-white z-40 left-1/3 right-1/2 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
                      <img className="sm:hover:bg-black sm:hover:opacity-80 "
-                            style={{borderRadius:"10%"}}
-                            src={card.snippet.thumbnails.high.url}
+                            style={{borderRadius:"5%"}}
+                            src={card.snippet.thumbnails.medium.url}
                             alt={card.snippet.title}
                              
                            
                             // Ensure the image fills the container
-                        /></div>   
+                        />
+                       
+                        </div>   <div className=" w-1/2  sm:w-[80%] p-1   font-semibold  xs:text-sm text-xl sm:text-sm"> {card.snippet.title}</div>
                     </div></Link>
                 );
             })
