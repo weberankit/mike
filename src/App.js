@@ -1,5 +1,6 @@
 //import Header from "./Components/Header";
 import { createBrowserRouter , RouterProvider } from "react-router-dom";
+
 import Body from "./Components/Body"
 import MainStore from "./utils/MainStore";
 import { Provider } from "react-redux";
@@ -15,6 +16,8 @@ import Contact from "./Components/Contact";
 import Advertise from "./Components/Advertise";
 import About from "./Components/About";
 import TermOFUse from "./Components/TermOfUse"
+import DevelopmentNotice from "./Components/DevelopemntMode";
+
 
 
 const PlaylistLazy = lazy(() => import('./Components/Playlist'));
@@ -51,9 +54,11 @@ function App() {
 const configPath=createBrowserRouter([
 
   {path:"/",
-    element:<Body/>,
+    element:<DevelopmentNotice/>,
+
     errorElement:<Error/>
   },
+  
  {
   path:"/latestVideo/:id",
   element:<Suspense fallback="loading data please wait ....."><VideoLazy/></Suspense>
