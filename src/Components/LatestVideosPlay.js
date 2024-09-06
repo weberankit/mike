@@ -137,7 +137,7 @@ setTimeout(()=>{
 
   
 
-    },6000)
+    },10000)
 
    }
 
@@ -186,7 +186,7 @@ onEnd={onEnd}
           <div className="flex xs:flex-col flex-row sm:flex-col">
             <div className="topvideo "  onClick={()=>{setIdValue(item.id.videoId);dispatch(addVideoDescData(item)); scroll()}}  key={item.id.videoId}>
                   <div className="relative">
-                  <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
+                  <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3 animate-spin-outline bg-red-500 w-10 rounded-xl m-auto hidden sm:block"><Play className="ml-1" size={35} /></div>
             <img key={item.snippet.thumbnails.medium.url} className={` p-2 rounded-3xl ${item?.snippet?.liveBroadcastContent === "live" && "border border-dotted border-black w-full"} `}   src={item?.snippet?.liveBroadcastContent === "live"? liveImg : item.snippet.thumbnails.medium.url}
                             alt={item.snippet.title}></img>
 </div>

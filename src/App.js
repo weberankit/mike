@@ -54,7 +54,7 @@ function App() {
 const configPath=createBrowserRouter([
 
   {path:"/",
-    element:<DevelopmentNotice/>,
+    element:<Body/>,
 
     errorElement:<Error/>
   },

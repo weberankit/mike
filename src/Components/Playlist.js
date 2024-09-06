@@ -97,7 +97,7 @@ const onMessage=useCallback(()=>{
  
  
 
- {showMsg && <OpenMsgbox className="bg-black absolute w-full " videoIdval={dataSrc?.id?.videoId} setShowMsg={()=>onMessage()} setVideoStop={()=>onbanner()}/>
+ {showMsg && <OpenMsgbox className="bg-black absolute w-full " videoIdval={dataSrc.snippet.resourceId.videoId} setShowMsg={()=>onMessage()} setVideoStop={()=>onbanner()}/>
 }
 
 
@@ -117,13 +117,13 @@ const onMessage=useCallback(()=>{
     {selectPlaylistData[id] && (
     <>
     <div className=" w-full sm:w-[50%]">
-   <div> <h1 className="text-4xl font-extrabold p-4">  <span className="text-red-500  text-6xl"> {titlePlay(id)}</span></h1></div>
+   <div> <h1 className="text-4xl font-extrabold p-4">  <span className="text-red-500 text-3xl sm:text-6xl"> { titlePlay(id).toUpperCase()}</span></h1></div>
     <div> <h2 className="text-xl sm:text-2xl w-full sm:w-4/5 p-4">{selectPlaylistData[id][0].snippet.title} </h2></div>
    
    
    <div>
  <div>
-  <img className="  w-44 sm:w-80 rounded-full m-auto " alt="logo-img" src="https://ucarecdn.com/90da0f60-21e5-4b6c-affc-3879ade004fc/miked.png"></img>
+  <img className="  w-44 sm:w-80 rounded-full m-auto hidden sm:block" alt="logo-img" src="https://ucarecdn.com/90da0f60-21e5-4b6c-affc-3879ade004fc/miked.png"></img>
  </div>
 
    </div>
@@ -203,8 +203,8 @@ setTimeout(()=>{
    setVideoStop(true)
   
       setTimeout(()=>{
-
-   const allowed= window.open(`https://www.youtube.com/watch?v=${dataSrc.snippet.resourceId.videoId}`,'_blank')
+         
+   const allowed= window.open(`https://www.youtube.com/watch?v=${dataSrc?.snippet?.resourceId?.videoId}`,'_blank')
 
    if(!allowed){
     setShowMsg(true)
@@ -216,7 +216,7 @@ setTimeout(()=>{
 
   
 
-    },6000)
+    },10000)
 
    }
 
@@ -264,7 +264,7 @@ onEnd={onEnd}
           <div  className="flex xs:flex-col flex-row sm:flex-col sm:w-4/5">
             <div className="topvideo "  onClick={()=>{setDataSrc(item) ; scroll()}}  key={item?.snippet.resourceId.videoId}>
                 <div className=" relative">
-                  <div className="   absolute top-1/2 text-white z-40 left-1/3 right-1/3  animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
+                  <div className=" hidden sm:block  absolute top-1/2 text-white z-40 left-1/4 right-1/3  animate-spin-outline bg-red-500 w-10 rounded-xl m-auto"><Play className="ml-1" size={35} /></div>
             <img key={item.snippet.thumbnails.medium.url} className="p-2 rounded-3xl sm:hover:bg-black sm:hover:opacity-80"   src={ item.snippet.thumbnails.medium.url}
                             alt={item.snippet.title}></img>
                    </div>

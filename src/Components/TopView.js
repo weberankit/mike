@@ -217,7 +217,7 @@ allowed?setVideoStop(false):setVideoStop(true)
 
     
 
-      },6000)
+      },10000)
 
      } 
 

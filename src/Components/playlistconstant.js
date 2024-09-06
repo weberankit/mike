@@ -18,12 +18,12 @@ export function titlePlay(id){
     if(id === "PLF_A6dNxTXawUA94psGVCxXfIf4FtxQTI"){
         return "8-pm"
    
-    } else if(id === "PLF_A6dNxTXazPGTqnPdrS4ZFmoAzu_k6w"){
+    } else if(id === "PLF_A6dNxTXawzZwUgJeq5qUlawy7Ly43x"){
       //breaking
-      return "Breaking News"
+      return "TRM EXCLUSIVE"
     
     }else if(id==="PLF_A6dNxTXazVWmkHf3uQtV9xAI9MzjdB"){
-     return "TRM-duniya"
+     return "TRM-दुनिया"
     
     }
 }

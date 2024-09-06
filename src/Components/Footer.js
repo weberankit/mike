@@ -93,7 +93,7 @@ const Footer = () => {
 
                         <div>
                             <div className="bg-red-500 text-white p-2 rounded-lg mb-4 text-center">
-                                Our Other Playlists 👇
+                                Our  Playlist
                             </div>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                 <a
@@ -102,7 +102,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    TRM Podcasts
+                                    Podcasts
                                 </a>
                                 <a
                                     className="text-red-500 hover:text-white transition-colors"
@@ -110,7 +110,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    TRM EXCLUSIVE
+                                 Exclusive
                                 </a>
                                 <a
                                     className="text-red-500 hover:text-white transition-colors"
@@ -118,7 +118,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    TRM MANCH
+                                     Manch
                                 </a>
                                 <a
                                     className="text-red-500 hover:text-white transition-colors"
@@ -126,7 +126,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    TRM GROUND REPORTS
+                                     Ground Reports
                                 </a>
 
 
@@ -137,7 +137,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                TRM DIALOGUES
+                                 Dialogues
                                 </a>
 
 
@@ -147,7 +147,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                Dil se with Kapil Sibal
+                                Dil Se With Kapil Sibal
                                 </a>
 
                                 <a
@@ -169,7 +169,7 @@ const Footer = () => {
                                 </a>
 
                                 <a
-                                    className="text-red-500 hover:text-white transition-colors hidden sm:block"
+                                    className="text-red-500 hover:text-white transition-colors "
                                     href="https://youtube.com/playlist?list=PLF_A6dNxTXax9CbiaNS2h4-lLAtiZN4Kf&si=5rDG-6Ry80pIKL4-"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -177,9 +177,35 @@ const Footer = () => {
                                  Kanoon Ki Pathshala
                                 </a>
 
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors  "
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXaxTvtJ1-nxtQLlJjW43_3a7&si=g2F2xRW-S2MF1Ahc"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                Election Yatra
+                                </a>
+                            
+                              
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors "
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXay1t5gj4p4xgTM9_kxhOuGg&si=4aauoo8Y8gxSMeQ3"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                Loktantra Series
+                                </a>
 
-
-
+                             
+                                <a
+                                    className="text-red-500 hover:text-white transition-colors "
+                                    href="https://youtube.com/playlist?list=PLF_A6dNxTXax9ZmfVZfK-s3TCtYqoKCZI&si=l7hCv9knyBYm135L"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                KuchDekhaJaaye
+                                </a>
+                               
                             </div>
                         </div>
                     </div>

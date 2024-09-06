@@ -18,7 +18,7 @@ function handleSent(text){
         }, 700);
       
       
-     const res = await fetch('https://formsubmit.co/ajax/impmessageweb@gmail.com', {
+     const res = await fetch('https://formsubmit.co/ajax/golugeeta12@gmail.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ call()
     return (
         <>
  <div className="mt-2 fixed"> <Link to={"/"} className="p-3 bg-red-500 text-white rounded-md mt-1">Home</Link></div>
-      <p className=" text-center font-bold">   {msg && msg}</p>
+      <p className=" w-[97%] text-center font-bold mt-5 absolute text-green-500 bg-white top-14 "> {msg && msg}</p>
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             
           <form 
