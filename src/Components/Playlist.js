@@ -16,7 +16,8 @@ import OpenMsgbox from "./OpenMsgbox"
 const Playlist =()=>{
 
 
-
+  let latestEventData; // Variable to store the latest event data
+  let timeID1, timeID2; 
 
 
 const {id}=useParams()
@@ -63,6 +64,7 @@ const [dataSrc,setDataSrc] =useState(null)
 
 const onEnd = (event) => {
   event.target.seekTo(0); // Seek to the beginning of the video
+  clearTimeout(timeID1);clearTimeout(timeID2)
 }; 
 const opts={
   height: '100%',
@@ -193,17 +195,26 @@ onReady={(event) => {
     dispatch(addShowLatestStatus(null))
   }}
   onStateChange={(event) => {
-    //  console.log(event.data, "this is event", event.target.getCurrentTime());
+ console.log(event.data, "this is event", event.target.getCurrentTime());
       
-    
+   latestEventData = event.data;  
 if(event.data === 1){
-          
-setTimeout(()=>{
+      
+timeID1= setTimeout(()=>{
+  console.log(event.data,latestEventData)
+  if (latestEventData === 2) { 
+    console.log("Video stopped, clearing first timeout.");
+    clearTimeout(timeID1);
+    return;
+}
+
+
    event.target.pauseVideo()
    setVideoStop(true)
   
-      setTimeout(()=>{
-         
+  // Second timeout to open YouTube link in a new tab
+ timeID2=  setTimeout(()=>{
+  if (latestEventData === 2) return;
    const allowed= window.open(`https://www.youtube.com/watch?v=${dataSrc?.snippet?.resourceId?.videoId}`,'_blank')
 
    if(!allowed){

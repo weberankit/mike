@@ -76,7 +76,7 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
            const iframe = entry.target;
            if (iframe.contentWindow) {
                if (entry.isIntersecting) {
-                   
+                   //sending mesagge to window iframe content to play video by using postmessage
                    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                } else {
                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -85,6 +85,7 @@ selectDataShorts && storeDataTorefreshPage( selectDataShorts,"shorts")
        });
    }, observerOptions);
    
+   //apllied toevery iframe video so that when it come to viewport then perfrom the further actions
    iframes.forEach(iframe => {
        observer.observe(iframe);
    });
