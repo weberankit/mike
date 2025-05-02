@@ -265,7 +265,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Facebook color="blue" size={24} />
+            <Facebook color="White" size={24} />
           </a>
           <a
             className="hover:text-red-500 transition-colors"
